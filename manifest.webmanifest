@@ -1,0 +1,19 @@
+{
+  "name": "ONE PIECE | Luffy",
+  "short_name": "ONE PIECE",
+  "description": "A cinematic, scroll-driven fan tribute to Monkey D. Luffy.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#120004",
+  "theme_color": "#b1001f",
+  "icons": [
+    {
+      "src": "assets/img/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

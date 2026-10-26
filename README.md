@@ -29,6 +29,16 @@ Then open http://localhost:5173. On Windows you can double-click `Open website.c
 | `serve.js` | A tiny local server with range support |
 | `guide/ONE-PIECE-Luffy-Guide.pdf` | A step-by-step guide to recreating the site |
 
+## The Workshop (`tools.html`)
+
+Three tools that live in the page itself — linked from the footer as **Tools**:
+
+- **ZIP upload** — drop any `.zip` and look inside it: the file list, previews for images, text and PDFs, and a download for every file. The archive is opened in the browser with JSZip, so nothing is uploaded anywhere and no server is involved.
+- **Ask the sea** — a small assistant panel. By default it calls the free, key-less Pollinations text API; point `chat.endpoint` in `js/tools-config.js` at any OpenAI-compatible endpoint to use your own.
+- **Contact** — a message form that mails the inbox tied to a free [Web3Forms](https://web3forms.com) key. Paste that key into `contact.accessKey` in `js/tools-config.js`; until you do, the form says exactly what is missing. No server of your own is needed.
+
+The page is installable too: `manifest.webmanifest` plus the service worker give it an icon, a standalone window and an offline copy.
+
 ## Credits
 
 An unofficial fan project, made for fun and never sold. ONE PIECE is © Eiichiro Oda / Shueisha and Toei Animation; the artwork and footage belong to their creators. Built with GSAP, Lenis and Google Fonts.

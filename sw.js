@@ -16,14 +16,24 @@
    Bump VERSION on a release: every older cache is swept on activation.
    ========================================================================== */
 
-const VERSION = 'one-piece-v1';
+const VERSION = 'one-piece-v2';
 const SHELL = `${VERSION}-shell`;
 const LIBRARY = `${VERSION}-library`;
 const LIVE = [SHELL, LIBRARY];
 
 /* Asked for by name while installing, so the very first offline visit still has
    a page, its look and its motion. */
-const SHELL_FILES = ['./', 'css/style.css', 'js/main.js', 'offline.js'];
+const SHELL_FILES = [
+  './',
+  'css/style.css',
+  'js/main.js',
+  'offline.js',
+  'tools.html',
+  'css/tools.css',
+  'js/tools.js',
+  'js/tools-config.js',
+  'manifest.webmanifest',
+];
 
 /* How many runtime responses stay warm. Past that the oldest go first. */
 const LIBRARY_LIMIT = 300;

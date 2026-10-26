@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Workshop · ONE PIECE | Luffy</title>
+  <meta name="description" content="Drop in a ZIP and look inside it, ask a question, or leave a note — the site's own little workshop.">
+  <meta name="theme-color" content="#120004">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Shippori+Mincho+B1:wght@400;500;600;700;800&family=Ultra&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css">
+</head>
+<body>
+
+  <header class="top">
+    <a class="top__mark" href="./">ONE PIECE</a>
+    <p class="top__eyebrow">The Workshop</p>
+    <div class="top__right">
+      <button class="ghost" id="install" type="button" hidden>Install app</button>
+      <a class="ghost" href="./">Back to the story</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="intro">
+      <p class="eyebrow">tools · built into the site</p>
+      <h1>Three things this page does <em>besides</em> tell the story.</h1>
+      <p class="lede">Drop in a site and look inside it, ask a question, or leave a note. Everything below runs from the page itself — no server of your own.</p>
+    </section>
+
+    <div class="tabs" role="tablist" aria-label="Workshop tools">
+      <button class="tab" type="button" role="tab" aria-selected="true" data-tab="zip">01 · ZIP upload</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" data-tab="chat">02 · Ask the sea</button>
+      <button class="tab" type="button" role="tab" aria-selected="false" data-tab="contact">03 · Contact</button>
+    </div>
+
+    <!-- 01 · ZIP ------------------------------------------------------------ -->
+    <section class="panel" data-panel="zip">
+      <div class="drop" id="drop" role="button" tabindex="0" aria-label="Choose a ZIP file to look inside">
+        <p class="drop__title">Drop a <span>.zip</span> here</p>
+        <p class="drop__hint">or click to choose one — nothing leaves your browser</p>
+        <input id="file" type="file" accept=".zip,application/zip,application/x-zip-compressed" hidden>
+      </div>
+
+      <p class="status" id="zip-status" role="status"></p>
+
+      <div class="split">
+        <div class="list" id="zip-list" hidden>
+          <div class="list__head">
+            <span id="zip-meta"></span>
+            <button class="link" id="zip-clear" type="button">Clear</button>
+          </div>
+          <ul class="files" id="zip-files"></ul>
+        </div>
+
+        <div class="preview" id="zip-preview" hidden>
+          <div class="preview__head">
+            <span id="preview-name"></span>
+            <a class="link" id="preview-download" download>Download file</a>
+          </div>
+          <div class="preview__body" id="preview-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · CHAT ----------------------------------------------------------- -->
+    <section class="panel" data-panel="chat" hidden>
+      <div class="chat">
+        <div class="chat__log" id="chat-log" aria-live="polite">
+          <p class="chat__empty">Ask anything — about the story, this site, or what to build next.</p>
+        </div>
+        <form class="chat__form" id="chat-form">
+          <input id="chat-input" type="text" placeholder="Type a question…" autocomplete="off" aria-label="Your question">
+          <button class="send" type="submit">Send</button>
+        </form>
+        <p class="status" id="chat-status" role="status"></p>
+      </div>
+    </section>
+
+    <!-- 03 · CONTACT -------------------------------------------------------- -->
+    <section class="panel" data-panel="contact" hidden>
+      <form class="form" id="contact-form">
+        <div class="form__row">
+          <label>Your name
+            <input name="name" type="text" required autocomplete="name">
+          </label>
+          <label>Email
+            <input name="email" type="email" required autocomplete="email">
+          </label>
+        </div>
+        <label>Message
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+        <button class="send" type="submit">Send it</button>
+        <p class="status" id="contact-status" role="status"></p>
+      </form>
+      <p class="form__note">Goes straight to the inbox set in <code>js/tools-config.js</code> — one free key, no server of your own.</p>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <p>An unofficial fan experiment. ONE PIECE &copy; Eiichiro Oda / Shueisha, Toei Animation.</p>
+    <a class="link" href="https://arian00001.site" target="_blank" rel="noopener noreferrer">Created by Dev Ayan</a>
+  </footer>
+
+  <script src="js/tools-config.js"></script>
+  <script src="js/tools.js"></script>
+</body>
+</html>
