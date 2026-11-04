@@ -165,11 +165,31 @@ async function slice(cached, request) {
 
   const body = await cached.clone().arrayBuffer();
   const total = body.byteLength;
-  const start = match[1] ? Number(match[1]) : 0;
-  const last = match[2] ? Number(match[2]) : total - 1;
-  if (start >= total) return cached;
+  if (!total) return cached;
 
-  const end = Math.min(last, total - 1);
+  // An empty first value is a suffix range: bytes=-300 asks for the LAST 300
+  // bytes, not the first 300. Players read the tail of a file first (an MP4's
+  // moov atom sits there), so getting the head instead is a hard failure.
+  let start;
+  let end;
+  if (!match[1]) {
+    const suffix = Number(match[2]);
+    if (!Number.isFinite(suffix) || suffix <= 0) return cached;
+    start = Math.max(0, total - suffix);
+    end = total - 1;
+  } else {
+    start = Number(match[1]);
+    end = match[2] ? Math.min(Number(match[2]), total - 1) : total - 1;
+  }
+
+  if (start >= total || start > end) {
+    return new Response(null, {
+      status: 416,
+      statusText: 'Range Not Satisfiable',
+      headers: { 'Content-Range': `bytes */${total}`, 'Accept-Ranges': 'bytes' },
+    });
+  }
+
   const part = body.slice(start, end + 1);
 
   return new Response(part, {
